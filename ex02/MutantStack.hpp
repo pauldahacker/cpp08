@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pde-masc <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/22 15:05:28 by pde-masc          #+#    #+#             */
+/*   Updated: 2025/05/22 15:05:29 by pde-masc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
 
@@ -25,37 +37,37 @@ we are in the child and only need to copy the std::stack parent info.
 template<typename T, typename Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>
 {
-    public:
-        MutantStack(void) : std::stack<T, Container>()  {}
-        MutantStack(const MutantStack &other) : std::stack<T, Container>(other) {}
-        ~MutantStack(void) {}
+	public:
+		MutantStack(void) : std::stack<T, Container>()  {}
+		MutantStack(const MutantStack &other) : std::stack<T, Container>(other) {}
+		~MutantStack(void) {}
 
-        const MutantStack  &operator=(const MutantStack &other)
-        {
-            if (this != &other)
-                std::stack<T, Container>::operator=(other);
-            return (*this);
-        }
-        // iterators
-        typedef typename Container::iterator iterator;
-        typedef typename Container::reverse_iterator reverse_iterator;
+		const MutantStack  &operator=(const MutantStack &other)
+		{
+			if (this != &other)
+				std::stack<T, Container>::operator=(other);
+			return (*this);
+		}
+		// iterators
+		typedef typename Container::iterator iterator;
+		typedef typename Container::reverse_iterator reverse_iterator;
 
-        iterator begin(void)
-        {
-            return (this->c.begin());
-        }
-        iterator end(void)
-        {
-            return (this->c.end());
-        }
-        reverse_iterator rbegin(void)
-        {
-            return (this->c.rbegin());
-        }
-        reverse_iterator rend(void)
-        {
-            return (this->c.rend());
-        }
+		iterator begin(void)
+		{
+			return (this->c.begin());
+		}
+		iterator end(void)
+		{
+			return (this->c.end());
+		}
+		reverse_iterator rbegin(void)
+		{
+			return (this->c.rbegin());
+		}
+		reverse_iterator rend(void)
+		{
+			return (this->c.rend());
+		}
 };
 
 #endif
